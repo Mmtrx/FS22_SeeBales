@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+	<translationContributors/>
+	<texts>
+		<!-- Keys -->
+		<text name = "input_bs_Bale" text = "SeeBales: Dialoganzeige"/>
+		<!-- Gui Headers and Tables-->
+		<text name = "BS_Settings" text = "Einstellungen"/>
+		<text name = "BS_BaleStatistics" text = "Ballen-Statistik"/>
+		<text name = "BS_PalletStatistics" text = "Paletten-Statistik"/>
+		<text name = "BS_Type" text = "Typ"/>
+		<text name = "BS_Count" text = "Anzahl"/>
+		<text name = "BS_total" text = "Gesamt"/>
+		<text name = "BS_round" text = "rd."/>
+		<text name = "BS_square" text = "qu."/>
+		<text name = "BS_palSupplies" text = "Farmbedarf"/>
+		<text name = "BS_palFarm" text = "Hoferzeugnisse"/>
+		<text name = "BS_palFood" text = "Nahrungsmittel"/>
+		<text name = "BS_palIndustry" text = "Industrieprodukte"/>
+
+		<!-- Gui Settings Dialog -->
+		<text name = "BS_showBales" text = "Ballen-Anzeige"/>
+		<text name = "BS_showPals" text = "Paletten-Anzeige"/>
+		<text name = "BS_size" text = "Symbolgröße"/>
+		<text name = "BS_farm" text = "Hofname"/>
+		<text name = "BS_all" text = "Alle anzeigen"/>
+		<text name = "BS_icons" text = "Icons"/>
+		<text name = "BS_symbols" text = "Punktmarker"/>
+		<text name = "BS_tipShowBales" text = "Stellen Sie ein, ob die Ballen als Icon, als Punktmarker oder gar nicht angezeigt werden"/>
+		<text name = "BS_tipShowPals" text = "Stellen Sie ein, ob die Paletten als Icon, als Punktmarker oder gar nicht angezeigt werden"/>
+		<text name = "BS_tipSize" text = "Stellen Sie die Größe der auf der Karte angezeigten Symbole (Icons, Punktmarker) ein"/>
+		<text name = "BS_tipFarm" text = "Stellen Sie ein, für welchen Hof die Statistik angezeigt wird."/>
+		<text name = "BS_tipAll" text = "Entscheiden Sie ob alle Ballen / Paletten im Spiel angezeigt werden, oder nur Ihre eigenen."/>
+		<text name = "BS_warnPal" text = "Achtung: Es gibt %d weitere aktive Palettenarten auf der Karte. Bitte mit Mausrad scrollen."/>
+		<text name = "BS_warnBal" text = "Achtung: Es gibt %d weitere aktive Ballenarten auf der Karte. Bitte mit Mausrad scrollen."/>
+	</texts>
+</l10n>

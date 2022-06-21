@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!--
+=======================================================================================================
+  BALESEE HOTSPOT GUI
+
+ Purpose:       Allows bales and pallets to show up on the PDA map as hotspots.
+ Author:        Mmtrx       
+ Changelog:
+  v2.0.0        18.02.2020  add Gui (settings and statistics)
+  v2.1.0.0      07.05.2021  handle all bale types, (e.g. Maizeplus forage extension)
+  v3.0.0.1			30.05.2022  scrollable / sectioned lists
+=======================================================================================================
+-->
+<GUIProfiles>
+	<Presets>
+		<Preset name="len398" value="398px 40px"/>
+		<Preset name="colorMainUI" value="0.0227 0.5346 0.8519 1.0" />
+	</Presets>
+	<!-- Header  - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+	<Profile name="baleSeeHeader" extends="ingameMenuFrameHeaderText">
+		<Value name="position" value="80px 0px"/>
+		<Value name="textColor" value="$preset_colorMainUI"/>
+	</Profile>
+
+	<!-- Settings Dialog - - - - - - - - - - - - - - - - - - - - -  -->
+	<Profile name="baleSeeDialogBg" extends="dialogBg">
+		<Value name="frameBottomColor" value="0.718 0.716 0.715 0.25"/>
+		<Value name="size" value="1680px 900px"/>
+	</Profile>
+	<Profile name="baleSeeButtonBox" extends="buttonBoxDocked">
+		<Value name="position" value="0px 20px"/>
+	</Profile>
+	<Profile name="baleSeeMultiText" extends="multiTextOption">
+		<Value name="margin" value="42px 42px 49px 16px"/>
+	</Profile>
+
+	<!-- Bale Statistics Table - - - - - - - - - - - - - - - - - - - - -  -->
+	<Profile name="baleSeeRow" extends="ingameMenuContractsListItem">
+		<Value name="size" value="$preset_len398"/>
+	</Profile>
+	<Profile name="baleSeeRowBg" extends="ingameMenuStatisticsRowBackground">
+		<Value name="size" value="$preset_len398"/>
+	</Profile>
+	<Profile name="baleSeeRowBgAlt" extends="ingameMenuStatisticsRowBackgroundAlternate">
+		<Value name="size" value="$preset_len398"/>
+	</Profile>
+	<Profile name="baleSeeBalContainer" extends="ingameMenuStatisticsContainer">
+		<Value name="size" value="400px 704px"/>
+	</Profile>
+	<Profile name="baleSeeHeaderBox" extends="ingameMenuStatisticsTableHeaderBox">
+		<Value name="size" value="400px 60px"/>
+	</Profile>
+	<Profile name="baleSeeTable" extends="ingameMenuStatisticsTable">
+		<Value name="size" value="400px 644px"/>
+		<Value name="maxNumItems" value="16"/>
+		<Value name="itemsPerCol" value="16"/>
+		<Value name="rowBackgroundProfile" value="baleSeeRowBg"/>
+		<Value name="rowBackgroundProfileAlternate" value="baleSeeRowBgAlt"/>
+	</Profile>
+	<Profile name="baleSeeTableHeader" extends="ingameMenuStatisticsTableHeader">
+		<Value name="size" value="120px 60px"/>
+	</Profile>
+	<Profile name="baleSeeTableHeaderType" extends="baleSeeTableHeader">
+		<Value name="size" value="280px 60px"/>
+	</Profile>
+	<Profile name="baleSeeCellType" extends="baleSeeCell">
+		<Value name="size" value="280px 40px"/>
+		<Value name="textMaxWidth" value="240px"/>
+	</Profile>
+	<Profile name="baleSeeCell" extends="ingameMenuStatisticsRowCell">
+		<Value name="size" value="120px 40px"/>
+		<Value name="textSize" value="16px"/>
+	</Profile>
+	<Profile name="baleSeeTotal" extends="ingameMenuStatisticsRowTypeCell">
+		<Value name="size" value="280px 40px"/>
+		<Value name="textSize" value="20px"/>
+		<Value name="textOffset" value="80px 0px"/>
+	</Profile>
+	<Profile name="baleSeeSlider" extends="verticalListSliderRightDocked">
+		<Value name="size" value="12px 644px"/>
+	</Profile>
+	<Profile name="baleSeeSliderBar" extends="verticalListSliderBar">
+		<Value name="size" value="6px 644px"/>
+	</Profile>
+
+</GUIProfiles>

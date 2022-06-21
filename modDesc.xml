@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="66">
+    <author> Mmtrx</author>
+    <version>3.0.0.1</version>
+    <title>
+        <en>See Bales</en>
+        <fr>Je Vois Des Balles</fr>
+    </title>
+    <description>
+        <en><![CDATA[
+This mod will cause both the PDA player map and the ingame Menu map to show small hotspots for bale and pallet objects where ever they exist. The hotspots will either show icons representing the various objects, whether bales or pallets, or small colored markers.
+
+The icons will look like the object itself, whereas the markers will represent objects by different colors, e.g.:
+
+Straw Bales ~ Light Brown
+Hay Bales ~ Light Green
+Grass Bales ~ Dark Green
+Silage Bales ~ Pink
+Wool Pallet ~ Light Gray
+
+Display type and size of the map markers can be configured in the SeeBales menu (Shift-b to show menu, only outside a vehicle).
+
+ATTENTION:
+On size setting "small" the icons/ markers are very tiny, they only show up at a rather high map zoom level (they do not show at default zoom).
+
+Whenever the game is saved, these settings will be saved to a file "BaleSee.xml" in the /modsSettings directory. If this file is present during load of a savegame, initial values for the configuruation settings will be read in.
+
+The SeeBales menu also displays some statistics about all ingame bales and pallets. Lines with count = 0 are not shown in the statistics tables.
+
+CHANGE LOG:
+V3.0.0.1:
+Port to current Farming Simulator 2022 game version 
+Different dot markers for bales / pallets / bigBags
+
+V2.1.0.0 (FS19): 
+Added Multiplayer support.
+Hotspot details boxes now always display the bale or pallet image (together with name of owner farm in MP)
+Added support for non-standard bales (e.g. from Maizeplus, Maizeplus Forage Extension).
+Statistics now count bales of different sizes sepatarely.
+
+V2.0.0.1: Added support for non-standard pallets (e.g. for straw harvest add-on). 
+
+V2.0.0.0: Added menu to configure settings - Shift-b to show (only outside a vehicle). 
+Added bale / pallet statistics tables. 
+Included cotton bales. 
+Marker size now configurable.
+
+LIMITATIONS:
+The mod does not account for any bales / pallets in corresponding storage mods (e.g. BaleStacks https://www.farming-simulator.com/mod.php?lang=en&country=de&mod_id=141307&title=fs2019).]]></en>
+        <fr><![CDATA[Mod montre les balles et les palettes sur la carte.
+
+Si vous vous êtes déjà demandé si vous aviez fini de ramasser des balles dans un grand champ, ou si certaines d'entre elles ont roulé et se cachent maintenant dans l'eau ou les buissons, ce mod peut vous aider à les retrouver. Il en va de même pour la recherche de palettes sur la carte, qu'il s'agisse de semences, d'engrais, d'aliments pour porcs, etc.
+
+Les hotspots PDA sont des symboles qui représentent les différents objets, qu'il s'agisse de balles ou de palettes. Par exemple, la carte du PDA montre une petite balle de paille pour chaque balle de paille sur la carte. Différents symboles sont utilisés selon le type de balle. Une palette de graines montre une minuscule palette de graines sur la carte du PDA, etc. Si vous préférez les petits cercles de couleur aux symboles, vous pouvez configurer l'affichage des balles et des palettes ainsi que la taille des marqueurs dans le menu SeeBales - accessible en appuyant sur Maj-b (uniquement à l'extérieur des véhicules). 
+
+Les symboles / marqueurs de couleur apparaissent à la fois sur la mini-carte et sur la "Carte du menu d'éscape". 
+
+ATTENTION :
+Si le réglage de la taille est "petit", les symboles sont minuscules et ne sont donc visibles sur la carte qu'à un niveau de zoom relativement élevé (supérieur au zoom standard) !
+De plus, les symboles sur la carte peuvent être superposés par le joueur ou un symbole de véhicule. C'est là que le niveau de zoom maximum de la carte est utile.
+
+Les valeurs de configuration définies sont stockées dans le fichier "BaleSee.xml" dans le dossier /modsSettings lors de la sauvegarde du jeu. Si le fichier est disponible lors du chargement d'une sauvegarde, les paramètres de configuration sont lus en conséquence. 
+
+De plus, le mod montre des statistiques sur toutes les balles et palettes actuellement disponibles. Les lignes dont la valeur (nombre) = 0 sont supprimées dans les tableaux statistiques.
+
+LOG DE CHANGEMENT :
+V3.0.0.1:
+Portage vers la version actuelle du Farming Simulator 2022 
+Différents marqueurs de points pour les balles / palettes / bigBags
+
+V2.1.0.0: 
+Le mod fonctionne désormais aussi dans les jeux multijoueurs.
+Les boîtes de détails des hotspots (qui apparaissent en cliquant) montrent toujours une image de la balle/palette. En mode MP également le nom de l'exploitation associée. 
+Ajout d'une aide pour les balles non standard, par exemple pour Maizeplus, Maizeplus Forage Extension.
+Dans les statistiques, les balles de différentes tailles sont désormais comptées séparément.
+
+V2.0.0.1 : Ajout d'une aide pour les palettes non standard, par exemple pour Straw Harvest. 
+ 
+V2.0.0.0 : Ajout d'un menu - appel avec la touche Shift-b (uniquement en dehors des véhicules): Configuration des marqueurs.
+Les statistiques sur les balles et les palettes s'affichent dans le menu. 
+La taille du marqueur est maintenant configurable. 
+Les balles de coton sont prises en compte.
+
+RESTRICTIONS :
+Le mode ne prend pas en compte les balles/palettes dans les mods de stockage (par exemple Bale Stacks https://www.farming-simulator.com/mod.php?lang=fr&country=fr&mod_id=141307&title=fs2019).
+]]></fr>
+        <de><![CDATA[Dieser Mod bewirkt, dass die PDA-Player-Karte Hotspots für Ballen- und Palettenobjekte anzeigt, wo immer sie auf der Karte vorhanden sind.
+
+Wenn Sie sich jemals gefragt haben, ob Sie mit dem Sammeln von Ballen auf einem großen Feld fertig sind, oder ob Ihnen einige weggerollt sind und sich nun im Wasser oder im Gebüsch verstecken, kann Ihnen dieser Mod dabei helfen, sie wiederzufinden. Gleiches gilt für das Auffinden von Paletten auf der Karte, ob Saatgut, Dünger, Schweinefutter usw.
+
+Die PDA-Hotspots sind Symbole, die die verschiedenen Objekte darstellen, ob Ballen oder Paletten. Die PDA-Karte zeigt z.B. einen kleinen Strohballen für jeden Strohballen auf der Karte. Je nach Ballenart werden unterschiedliche Symbole verwendet. Eine Saatgutpalette zeigt auf der PDA-Karte eine winzige Saatgutpalette, usw. Wenn kleine farbige Kreise den Symbolen vorgezogen werden, können Sie die Darstellung der Ballen und Paletten sowie die Größe der Marker im SeeBales Menü konfigurieren - Aufruf mit Taste Umschalt-b (nur außerhalb von Fahrzeugen). 
+
+Die Symbole / farbigen Marker erscheinen sowohl auf der Mini-Map als auch auf der 'Escape-Menü-Karte'. 
+
+ACHTUNG:
+Bei Größeneinstellung "klein" sind die Symbole winzig und daher nur bei einem relativ hohen Zoomlevel (höher als Standard Zoom) auf der Karte zu sehen!
+Außerdem können die Symbole auf der Karte vom Spieler- oder einem Fahrzeugsymbol überlagert werden. Da hilft dann der maximale Zoom der Karte.
+
+Die eingestellten Konfigurationswerte werden beim Speichern des Spielstands in der Datei "BaleSee.xml" im /modsSettings Ordner abgelegt. Wenn die Datei beim Laden eines Savegames vorhanden ist, werden die Schalterstellungen entsprechend eingelesen. 
+
+Außerdem zeigt der Mod eine Statistik über alle aktuell vorhandenen Ballen und Paletten an. Zeilen mit Wert (Anzahl) = 0 werden in den Statistiktabellen unterdrückt.
+
+CHANGE LOG:
+V3.0.0.1:
+Anpassung an die aktuelle Version Landwirtschafts-Simulator 2022
+Verschiedene Markerformen für Ballen / Paletten / BigBags
+
+V2.1.0.0 (LS19): 
+Der Mod funktioniert nun auch in Multiplayer Spielen.
+Die Detailboxen der Hotspots (die beim Anklicken erscheinen) zeigen nun immer ein Bild des Ballens / der Palette. Im MP-Modus auch den Namen des zughörigen Hofes. 
+Non-standard Ballen werden unterstützt (z.B. für Maizeplus, Maizeplus Forage Extension).
+In der Statistik werden nun Ballen unterschiedlicher Größe separat gezählt. 
+
+V2.0.0.1: Support für non-standard Paletten hinzugefügt, z.B. für Straw Harvest add-on. 
+ 
+V2.0.0.0: Menu hinzugefügt - Aufruf mit Taste Umschalt-b (nur außerhalb von Fahrzeugen): Konfiguration der Marker.
+Ballen- und Palettenstatistik Anzeige im Menu. 
+Markergröße nun konfigurierbar. 
+Baumwollballen werden berücksichtigt.
+
+EINSCHRÄNKUNGEN:
+Der Mod berücksichtigt keine Ballen / Paletten in entsprechenden storage mods (z.B. BaleStacks https://www.farming-simulator.com/mod.php?lang=de&country=de&mod_id=141307&title=fs2019).
+]]></de>
+    </description>
+    <multiplayer supported="true"/>   
+    <iconFilename>icon.dds</iconFilename>
+    <l10n filenamePrefix="l10n/l10n"/>
+    <extraSourceFiles>
+        <sourceFile filename="BaleSee.lua" />
+    </extraSourceFiles>
+    <actions>
+        <action name="bs_Bale" category="PLAYER" axisType="HALF" ignoreComboMask="false"/>
+    </actions>  
+    <inputBinding>
+        <actionBinding action="bs_Bale" >
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_lshift KEY_b" />
+        </actionBinding>
+    </inputBinding> 
+    <baleTypes/>
+</modDesc>

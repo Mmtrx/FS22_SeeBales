@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!--
+=======================================================================================================
+ BALESEE HOTSPOT GUI
+
+ Purpose:		Allows bales and pallets to show up on the PDA map as hotspots.
+ Author:		Mmtrx		
+ Changelog:
+	v2.0.0		18.02.2020  add Gui (settings and statistics)
+	v2.1.0.0		30.06.2021  MULTIPLAYER! / handle all bale types, (e.g. Maizeplus forage extension)
+	v3.0.0.0	30.04.2022  port to FS22
+	v3.0.0.1	30.05.2022  scrollable / sectioned lists
+=======================================================================================================
+-->
+<GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+	<GuiElement type="bitmap" profile="baleSeeDialogBg" id="dialogElement">
+		<!-- page header -->
+		<GuiElement debugEnabled="false" type="empty" profile="ingameMenuFrameHeaderPanel" position="10px -10px" >
+			<GuiElement type="bitmap" profile="ingameMenuStatisticsHeaderIcon" position="0px 0px" visible="true" />
+			<GuiElement type="text" profile="baleSeeHeader" text="SeeBales"/>
+		</GuiElement>
+		<!-- sub header: Settings / Statistics -->
+		<GuiElement type="empty" profile="ingameMenuFrameHeaderPanel" position="120px -74px" debugEnabled="false" >
+			<GuiElement type="text" profile="ingameMenuFrameHeaderText" position="42px 0px" textSize="26px" text="$l10n_BS_Settings" />
+			<GuiElement type="text" profile="ingameMenuFrameHeaderText" position="520px 0px" textSize="26px" text="$l10n_BS_BaleStatistics" />
+			<GuiElement type="text" profile="ingameMenuFrameHeaderText" position="1040px 0px" textSize="26px" text="$l10n_BS_PalletStatistics" />
+		</GuiElement>
+
+		<!-- settings box -->
+		<GuiElement type="bitmap" profile="ingameMenuSettingsBox" position="120px -138px" id="settings" size="400px 520px" >
+			<GuiElement type="boxLayout" profile="ingameMenuSettingsLayout" position="0px -28px" id="boxLayout" >
+				<GuiElement type="multiTextOption" profile="baleSeeMultiText" onClick="onClickShowBales" id="setShowBales" toolTipElementId="helpBoxText" toolTipText="" >
+					<GuiElement type="button" profile="multiTextOptionLeft"/>
+					<GuiElement type="button" profile="multiTextOptionRight"/>
+					<GuiElement type="text" profile="multiTextOptionText"/>
+					<GuiElement type="text" profile="multiTextOptionTitle" text="$l10n_BS_showBales"/>
+					<GuiElement type="bitmap" profile="multiTextOptionBg"/>
+				</GuiElement>
+
+				<GuiElement type="multiTextOption" profile="baleSeeMultiText" onClick="onClickShowPals" id="setShowPals" toolTipElementId="helpBoxText" toolTipText="" >
+					<GuiElement type="button" profile="multiTextOptionLeft"/>
+					<GuiElement type="button" profile="multiTextOptionRight"/>
+					<GuiElement type="text" profile="multiTextOptionText"/>
+					<GuiElement type="text" profile="multiTextOptionTitle" text="$l10n_BS_showPals"/>
+					<GuiElement type="bitmap" profile="multiTextOptionBg"/>
+				</GuiElement>
+
+				<GuiElement type="multiTextOption" profile="baleSeeMultiText" onClick="onClickSize" id="setSize" toolTipElementId="helpBoxText" toolTipText="" >
+					<GuiElement type="button" profile="multiTextOptionLeft"/>
+					<GuiElement type="button" profile="multiTextOptionRight"/>
+					<GuiElement type="text" profile="multiTextOptionText"/>
+					<GuiElement type="text" profile="multiTextOptionTitle" text="$l10n_BS_size"/>
+					<GuiElement type="bitmap" profile="multiTextOptionBg"/>
+				</GuiElement>
+
+				<GuiElement type="multiTextOption" profile="baleSeeMultiText" onClick="onClickFarm" id="setFarm" toolTipElementId="helpBoxText" toolTipText="" >
+					<GuiElement type="button" profile="multiTextOptionLeft"/>
+					<GuiElement type="button" profile="multiTextOptionRight"/>
+					<GuiElement type="text" profile="multiTextOptionText"/>
+					<GuiElement type="text" profile="multiTextOptionTitle" text="$l10n_BS_farm"/>
+					<GuiElement type="bitmap" profile="multiTextOptionBg"/>
+				</GuiElement>
+
+				<GuiElement type="multiTextOption" profile="baleSeeMultiText" onClick="onClickAll" id="setAll" toolTipElementId="helpBoxText" toolTipText="" >
+					<GuiElement type="button" profile="multiTextOptionLeft"/>
+					<GuiElement type="button" profile="multiTextOptionRight"/>
+					<GuiElement type="text" profile="multiTextOptionText"/>
+					<GuiElement type="text" profile="multiTextOptionTitle" text="$l10n_BS_all"/>
+					<GuiElement type="bitmap" profile="multiTextOptionBg"/>
+				</GuiElement>
+			</GuiElement>
+		</GuiElement>
+
+		<!-- help text box -->
+		<GuiElement type="bitmap" profile="ingameMenuHelpRowBg" position="20px 80px"  size="600px 88px" id="helpBox" visible="false" debugEnabled="false" >
+			<GuiElement type="bitmap" profile="ingameMenuHelpRowIcon" id="helpBoxIcon"/>
+			<GuiElement type="text" profile="ingameMenuHelpRowText" size="500px 50px" textWrapWidth="400px" id="helpBoxText" text="" onTextChanged="onToolTipBoxTextChanged" />
+		</GuiElement>
+
+		<!-- bale table -->
+		<GuiElement type="empty" positionOrigin="topLeft" id="statsContainer" profile="baleSeeBalContainer" screenAlign="topLeft" position="640px -138px" debugEnabled="false" >
+			<GuiElement type="boxLayout" position="0px 0px" profile="baleSeeHeaderBox" id="baleTableHeaderBox" >
+				<GuiElement type="button" profile="baleSeeTableHeaderType" text="$l10n_BS_Type" />
+				<GuiElement type="button" profile="baleSeeTableHeader" text="$l10n_BS_Count" />
+			</GuiElement>
+			<GuiElement type="empty" position="1px -60px" debugEnabled="false" >
+				<GuiElement type="smoothList" id="baleList" handleFocus="false" profile="baleSeeTable" listSectionHeader="section" >
+					<GuiElement type="listItem" profile="baleSeeRow" name="myRowTemplate" >
+						<GuiElement type="text" profile="baleSeeCellType" name="btype" />
+						<GuiElement type="text" profile="baleSeeCell" name="count" position="280px 0px"/>
+					</GuiElement>
+					<GuiElement type="listItem" profile="ingameMenuHelpListCategory" name="section">
+						<GuiElement type="text" profile="ingameMenuHelpListCategoryTitle" text="Section Title" name="title"/>
+					</GuiElement>
+				</GuiElement>
+				<GuiElement type="threePartBitmap" profile="baleSeeSlider">
+						<GuiElement type="slider" profile="baleSeeSliderBar" dataElementId="baleList" handleFocus="false" />
+				</GuiElement>
+			</GuiElement>
+		</GuiElement>
+		<!-- bales sum line -->
+		<GuiElement type="bitmap" profile="baleSeeRow" id="sumBal" screenAlign="bottomLeft" positionOrigin="bottomLeft" position="640px 11px" >
+			<GuiElement type="text" profile="baleSeeCellType" text="$l10n_BS_total" />
+			<GuiElement type="text" profile="baleSeeCell" id="bcount" position="280px 0px"/>
+		</GuiElement>
+
+		<!-- pallet table -->
+		<GuiElement type="empty" positionOrigin="topLeft" position="1160px -138px" profile="baleSeeBalContainer" screenAlign="topLeft" >
+			<GuiElement type="boxLayout" position="0px 0px" profile="baleSeeHeaderBox" id="palTableHeaderBox" >
+				<GuiElement type="button" profile="baleSeeTableHeaderType" text="$l10n_BS_Type" />
+				<GuiElement type="button" profile="baleSeeTableHeader" text="$l10n_BS_Count" />
+			</GuiElement>
+			<GuiElement type="empty" position="1px -60px" debugEnabled="false" >
+				<GuiElement type="smoothList" id="palletList" handleFocus="false" profile="baleSeeTable" listSectionHeader="section" >
+					<GuiElement type="listItem" profile="baleSeeRow" >
+						<GuiElement type="text" profile="baleSeeCellType" name="btype" />
+						<GuiElement type="text" profile="baleSeeCell" name="count" position="280px 0px"/>
+					</GuiElement>
+					<GuiElement type="listItem" profile="ingameMenuHelpListCategory" name="section">
+						<GuiElement type="text" profile="ingameMenuHelpListCategoryTitle" text="Section Title" name="title"/>
+					</GuiElement>
+				</GuiElement>
+				<GuiElement type="threePartBitmap" profile="baleSeeSlider">
+						<GuiElement type="slider" profile="baleSeeSliderBar" dataElementId="palletList" handleFocus="false" />
+				</GuiElement>
+			</GuiElement>
+		</GuiElement>
+		<!-- pallet sum line -->
+		<GuiElement type="bitmap" profile="baleSeeRow" id="sumPal" screenAlign="bottomLeft" positionOrigin="bottomLeft" position="1160px 11px" >
+			<GuiElement type="text" profile="baleSeeCellType" text="$l10n_BS_total" />
+			<GuiElement type="text" profile="baleSeeCell" id="pcount" position="280px 0px"/>
+		</GuiElement>
+		
+		<!-- std ok/esc buttons -->
+		<GuiElement type="flowLayout" profile="buttonBoxDocked" id="buttonsPC" position="20px 12px" debugEnabled="false" >
+			<GuiElement type="button" profile="buttonBack" text="$l10n_button_back" onClick="onClickBack" id="noButton"/>
+			<GuiElement type="button" profile="buttonOK" text="$l10n_button_confirm" onClick="onClickOk" id="yesButton" visible="false"/>
+		</GuiElement>
+	</GuiElement>
+</GUI>

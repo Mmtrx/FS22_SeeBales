@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+	<translationContributors/>
+	<texts>
+		<!-- Keys -->
+		<text name = "input_bs_Bale" text = "SeeBales: show dialog"/>
+		<!-- Gui -->
+		<text name = "BS_Settings" text = "Settings"/>
+		<text name = "BS_BaleStatistics" text = "Bale Statistics"/>
+		<text name = "BS_PalletStatistics" text = "Pallette Statistics"/>
+		<text name = "BS_Type" text = "Type"/>
+		<text name = "BS_Count" text = "Count"/>
+		<text name = "BS_total" text = "Total"/>
+		<text name = "BS_round" text = "rd."/>
+		<text name = "BS_square" text = "sq."/>
+		<text name = "BS_palSupplies" text = "Farm Supplies"/>
+		<text name = "BS_palFarm" text = "Farm products"/>
+		<text name = "BS_palFood" text = "Food products"/>
+		<text name = "BS_palIndustry" text = "Industry products"/>
+
+		<!-- Gui Settings Dialog -->
+		<text name = "BS_showBales" text = "Bales Display"/>
+		<text name = "BS_showPals" text = "Pallets Display"/>
+		<text name = "BS_size" text = "Symbol Size"/>
+		<text name = "BS_icons" text = "Icons"/>
+		<text name = "BS_farm" text = "Farm name"/>
+		<text name = "BS_all" text = "Show all"/>
+		<text name = "BS_symbols" text = "Dot markers"/>
+
+		<text name = "BS_tipShowBales" text = "You can set how bales are displayed: as icons, as dot markers, or not at all."/>
+		<text name = "BS_tipShowPals" text = "You can set how pallets are displayed: as icons, as dot markers, or not at all."/>
+		<text name = "BS_tipSize" text = "You can set the size of the symbols (icons, dot markers) on the map."/>
+		<text name = "BS_tipFarm" text = "You can set for which farm the statistics are displayed."/>
+		<text name = "BS_tipAll" text = "You can decide if all bales/ pallets are displayed on map, or only those you own."/>
+		<text name = "BS_warnPal" text = "Attention: There are %d more pallet types on the map. Please use mouse wheel to scroll."/>
+		<text name = "BS_warnBal" text = "Attention: There are %d more bale types on the map. Please use mouse wheel to scroll."/>
+	</texts>
+</l10n>
