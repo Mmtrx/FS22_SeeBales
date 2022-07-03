@@ -4,6 +4,7 @@
     <version>3.0.0.1</version>
     <title>
         <en>See Bales</en>
+        <de>Ballen Sehen</de>
         <fr>Je Vois Des Balles</fr>
     </title>
     <description>
@@ -19,9 +20,6 @@ Silage Bales ~ Pink
 Wool Pallet ~ Light Gray
 
 Display type and size of the map markers can be configured in the SeeBales menu (Shift-b to show menu, only outside a vehicle).
-
-ATTENTION:
-On size setting "small" the icons/ markers are very tiny, they only show up at a rather high map zoom level (they do not show at default zoom).
 
 Whenever the game is saved, these settings will be saved to a file "BaleSee.xml" in the /modsSettings directory. If this file is present during load of a savegame, initial values for the configuruation settings will be read in.
 
@@ -46,7 +44,7 @@ Included cotton bales.
 Marker size now configurable.
 
 LIMITATIONS:
-The mod does not account for any bales / pallets in corresponding storage mods (e.g. BaleStacks https://www.farming-simulator.com/mod.php?lang=en&country=de&mod_id=141307&title=fs2019).]]></en>
+The mod does not account for any bales / pallets in corresponding storage mods.]]></en>
         <fr><![CDATA[Mod montre les balles et les palettes sur la carte.
 
 Si vous vous êtes déjà demandé si vous aviez fini de ramasser des balles dans un grand champ, ou si certaines d'entre elles ont roulé et se cachent maintenant dans l'eau ou les buissons, ce mod peut vous aider à les retrouver. Il en va de même pour la recherche de palettes sur la carte, qu'il s'agisse de semences, d'engrais, d'aliments pour porcs, etc.
@@ -54,10 +52,6 @@ Si vous vous êtes déjà demandé si vous aviez fini de ramasser des balles dan
 Les hotspots PDA sont des symboles qui représentent les différents objets, qu'il s'agisse de balles ou de palettes. Par exemple, la carte du PDA montre une petite balle de paille pour chaque balle de paille sur la carte. Différents symboles sont utilisés selon le type de balle. Une palette de graines montre une minuscule palette de graines sur la carte du PDA, etc. Si vous préférez les petits cercles de couleur aux symboles, vous pouvez configurer l'affichage des balles et des palettes ainsi que la taille des marqueurs dans le menu SeeBales - accessible en appuyant sur Maj-b (uniquement à l'extérieur des véhicules). 
 
 Les symboles / marqueurs de couleur apparaissent à la fois sur la mini-carte et sur la "Carte du menu d'éscape". 
-
-ATTENTION :
-Si le réglage de la taille est "petit", les symboles sont minuscules et ne sont donc visibles sur la carte qu'à un niveau de zoom relativement élevé (supérieur au zoom standard) !
-De plus, les symboles sur la carte peuvent être superposés par le joueur ou un symbole de véhicule. C'est là que le niveau de zoom maximum de la carte est utile.
 
 Les valeurs de configuration définies sont stockées dans le fichier "BaleSee.xml" dans le dossier /modsSettings lors de la sauvegarde du jeu. Si le fichier est disponible lors du chargement d'une sauvegarde, les paramètres de configuration sont lus en conséquence. 
 
@@ -82,7 +76,7 @@ La taille du marqueur est maintenant configurable.
 Les balles de coton sont prises en compte.
 
 RESTRICTIONS :
-Le mode ne prend pas en compte les balles/palettes dans les mods de stockage (par exemple Bale Stacks https://www.farming-simulator.com/mod.php?lang=fr&country=fr&mod_id=141307&title=fs2019).
+Le mode ne prend pas en compte les balles/palettes dans les mods de stockage.
 ]]></fr>
         <de><![CDATA[Dieser Mod bewirkt, dass die PDA-Player-Karte Hotspots für Ballen- und Palettenobjekte anzeigt, wo immer sie auf der Karte vorhanden sind.
 
@@ -91,10 +85,6 @@ Wenn Sie sich jemals gefragt haben, ob Sie mit dem Sammeln von Ballen auf einem 
 Die PDA-Hotspots sind Symbole, die die verschiedenen Objekte darstellen, ob Ballen oder Paletten. Die PDA-Karte zeigt z.B. einen kleinen Strohballen für jeden Strohballen auf der Karte. Je nach Ballenart werden unterschiedliche Symbole verwendet. Eine Saatgutpalette zeigt auf der PDA-Karte eine winzige Saatgutpalette, usw. Wenn kleine farbige Kreise den Symbolen vorgezogen werden, können Sie die Darstellung der Ballen und Paletten sowie die Größe der Marker im SeeBales Menü konfigurieren - Aufruf mit Taste Umschalt-b (nur außerhalb von Fahrzeugen). 
 
 Die Symbole / farbigen Marker erscheinen sowohl auf der Mini-Map als auch auf der 'Escape-Menü-Karte'. 
-
-ACHTUNG:
-Bei Größeneinstellung "klein" sind die Symbole winzig und daher nur bei einem relativ hohen Zoomlevel (höher als Standard Zoom) auf der Karte zu sehen!
-Außerdem können die Symbole auf der Karte vom Spieler- oder einem Fahrzeugsymbol überlagert werden. Da hilft dann der maximale Zoom der Karte.
 
 Die eingestellten Konfigurationswerte werden beim Speichern des Spielstands in der Datei "BaleSee.xml" im /modsSettings Ordner abgelegt. Wenn die Datei beim Laden eines Savegames vorhanden ist, werden die Schalterstellungen entsprechend eingelesen. 
 
@@ -119,20 +109,20 @@ Markergröße nun konfigurierbar.
 Baumwollballen werden berücksichtigt.
 
 EINSCHRÄNKUNGEN:
-Der Mod berücksichtigt keine Ballen / Paletten in entsprechenden storage mods (z.B. BaleStacks https://www.farming-simulator.com/mod.php?lang=de&country=de&mod_id=141307&title=fs2019).
+Der Mod berücksichtigt keine Ballen / Paletten in entsprechenden storage mods.
 ]]></de>
     </description>
     <multiplayer supported="true"/>   
-    <iconFilename>icon.dds</iconFilename>
+    <iconFilename>modIcon.dds</iconFilename>
     <l10n filenamePrefix="l10n/l10n"/>
     <extraSourceFiles>
         <sourceFile filename="BaleSee.lua" />
     </extraSourceFiles>
     <actions>
-        <action name="bs_Bale" category="PLAYER" axisType="HALF" ignoreComboMask="false"/>
+        <action name="BS_MENU" category="PLAYER" axisType="HALF" />
     </actions>  
     <inputBinding>
-        <actionBinding action="bs_Bale" >
+        <actionBinding action="BS_MENU" >
             <binding device="KB_MOUSE_DEFAULT" input="KEY_lshift KEY_b" />
         </actionBinding>
     </inputBinding> 

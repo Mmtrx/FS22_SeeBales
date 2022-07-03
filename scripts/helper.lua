@@ -239,9 +239,9 @@ function BaleSee:cltObjects( balesOnly )
 	end
 	print("  i  id  node farm type *CLIENT")
 	for i, o in pairs(g_client.objects) do
-		if not balesOnly or o:isa(G0.Bale) then
+		if not balesOnly or o:isa(Bale) then
 			print(string.format("%3d %3d %5s %4s %s",i, o.id, tostring(o.nodeId),
-				 tostring(o.ownerFarmId),tostring(o.typeName)))
+				 tostring(o.ownerFarmId), o.i3dFilename:sub(-18)))
 		end
 	end
 end;
@@ -254,17 +254,16 @@ function BaleSee.readStream(bale, superFunc, streamId, connection )
 	if g_client.objectIds[bale] == nil then
 		superFunc(bale, streamId, connection)	
 		super = false
-		local cltBalId = g_client:getObjectId(bale)
-		print(string.format("-- readStream: %s Bale %s %s/%s (%sl) of farm %s", 
-			bs.ft[bale.fillType].name, cltBalId, bale.id,
-			tostring(bale.nodeId), tostring(bale.fillLevel), tostring(bale.ownerFarmId)))
+		debugPrint("--readStream: %s Bale %s %s/%s (%sl) of farm %s", 
+			bs.ft[bale.fillType].name, bale.i3dFilename:sub(-18), bale.id,
+			tostring(bale.nodeId), tostring(bale.fillLevel), tostring(bale.ownerFarmId))
 	end	
 	
 	if super then superFunc(bale, streamId, connection)	end
 	local x,z = 0,0
 	if bale.nodeId then x,_,z = getWorldTranslation(bale.nodeId) end
-	print(string.format("-- %s %s %s Bale %s/%s (%sl) of farm %s at %4.2f %4.2f.", 
-		bs.visible[bs.baleState], "n/a",
+	debugPrint("--readStream: %s %s Bale %s/%s (%sl) of farm %s at %4.2f %4.2f.", 
+		bs.visible[bs.baleState], 
 		bs.ft[bale.fillType].name, tostring(bale.id),
-		tostring(bale.nodeId), tostring(bale.fillLevel), tostring(bale.ownerFarmId), x, z))	
+		tostring(bale.nodeId), tostring(bale.fillLevel), tostring(bale.ownerFarmId), x, z)	
 end;

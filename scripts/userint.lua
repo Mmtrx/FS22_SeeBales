@@ -114,21 +114,21 @@ function BaleSee:onFarmDeleted(farmId)
 		v[1]:delete()
 	end
 end
-function BaleSee:registerActionEventsPlayer()
+function BaleSee:registerActionEventsPlayer(player, inpManager)
 	-- gets called when player leaves vehicle
-	local bs = BaleSee
-	local result, eventId = InputBinding.registerActionEvent(g_inputBinding,"bs_Bale",
-			self,bs.actionbs_Bale,false,true,false,true)
-	if result then
-		bs.event = eventId
-		g_inputBinding.events[eventId].displayIsVisible = true;
+	local _, eventId = inpManager:registerActionEvent(InputAction.BS_MENU,
+			InputBinding.NO_EVENT_TARGET,self.showDialog,false,true,false,true)
+	self.event = eventId
+	inpManager:setActionEventTextVisibility(eventId, true)
+end;
+function BaleSee:removeActionEventsPlayer(player, inpManager)
+	-- gets called when player enters vehicle
+	if self.event ~= nil then 
+		inpManager:removeActionEvent(self.event)
+		self.event = nil
 	end
 end;
-function BaleSee:removeActionEventsPlayer()
-	-- gets called when player enters vehicle
-	BaleSee.event = nil
-end;
-function BaleSee:actionbs_Bale(actionName, keyStatus, arg3, arg4, arg5)
+function BaleSee:showDialog(actionName, keyStatus, arg3, arg4, arg5)
 	local bs = BaleSee
 	-- set texts for multiTextOption Gui elements:
 	bs.oGui.setShowBales:setTexts(bs.showOpts)

@@ -3,7 +3,7 @@
 	<translationContributors/>
 	<texts>
 		<!-- Keys -->
-		<text name = "input_bs_Bale" text = "SeeBales: показать окно настроек"/>
+		<text name = "input_BS_MENU" text = "SeeBales"/>
 		<!-- Gui -->
 		<text name = "BS_Settings" text = "Настройки"/>
 		<text name = "BS_BaleStatistics" text = "Статистика тюков"/>
@@ -13,6 +13,10 @@
 		<text name = "BS_total" text = "Всего"/>
 		<text name = "BS_round" text = "кругл."/>
 		<text name = "BS_square" text = "кв."/>
+
+		<!-- Info Dialog -->
+		<text name = "BS_baleBought" text = "INFO SeeBales: The bales you just bought will only be recognized by SeeBales, when you move near to them."/>
+		<text name = "BS_lastBought" text = "(This message will not show again.)"/>
 
 		<!-- Gui Settings Dialog -->
 		<text name = "BS_showBales" text = "Отображение тюков"/>

@@ -3,7 +3,7 @@
 	<translationContributors/>
 	<texts>
 		<!-- Keys -->
-		<text name = "input_bs_Bale" text = "SeeBales: Dialoganzeige"/>
+		<text name = "input_BS_MENU" text = "SeeBales"/>
 		<!-- Gui Headers and Tables-->
 		<text name = "BS_Settings" text = "Einstellungen"/>
 		<text name = "BS_BaleStatistics" text = "Ballen-Statistik"/>
@@ -17,6 +17,10 @@
 		<text name = "BS_palFarm" text = "Hoferzeugnisse"/>
 		<text name = "BS_palFood" text = "Nahrungsmittel"/>
 		<text name = "BS_palIndustry" text = "Industrieprodukte"/>
+
+		<!-- Info Dialog -->
+		<text name = "BS_baleBought" text = "INFO SeeBales: Die gerde gekauften Ballen werden von SeeBales erst erkannt, wenn Sie sich in ihre Nähe begeben."/>
+		<text name = "BS_lastBought" text = "(Diese Meldung wird nicht noch einmal angezeigt.)"/>
 
 		<!-- Gui Settings Dialog -->
 		<text name = "BS_showBales" text = "Ballen-Anzeige"/>

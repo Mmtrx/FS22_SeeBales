@@ -36,6 +36,16 @@ BS = {
 	PAL_FOOD 	= 3,
 	PAL_INDUSTRY= 4,
 }
+function registerAction(player)
+		g_inputBinding:beginActionEventsModification(Player.INPUT_CONTEXT_NAME)
+		BaleSee:registerActionEventsPlayer(player, g_inputBinding)
+		g_inputBinding:endActionEventsModification()
+end
+function removeAction(player)
+		g_inputBinding:beginActionEventsModification(Player.INPUT_CONTEXT_NAME)
+		BaleSee:removeActionEventsPlayer(player, g_inputBinding)
+		g_inputBinding:endActionEventsModification()
+end
 function BaleSee:initialize()
 	debugPrint("[%s] initialize(): %s", self.name, self.initialized)
 	if self.initialized ~= nil then return end -- run only once
@@ -118,6 +128,7 @@ function BaleSee:initialize()
 	self.dispSize 	= 3					-- 1:small, 2:medium, 3:large
 	self.statFarm 	= nil 				-- MP: farmId to display bale/pall stats
 	self.showAll 	= false 			-- MP: show hotspots of all farms
+	self.numShopMessage = 2 			-- MP: how often to show shop message, on remote bale buying
 	self.symSizes 	= {
 		{ icon = {getNormalizedScreenValues(20,20)},dot = {getNormalizedScreenValues(30,30)}},  --"small"
 		{ icon = {getNormalizedScreenValues(30,30)},dot = {getNormalizedScreenValues(40,40)}},  --"medium"
@@ -157,6 +168,20 @@ function BaleSee:initialize()
 			return
 		end
 	end
+	-- to insert Shift-B key for player F1-menu
+	Player.registerActionEvents = Utils.appendedFunction(Player.registerActionEvents, registerAction);
+	Player.removeActionEvents = Utils.appendedFunction(Player.removeActionEvents, removeAction);		
+		
+	-- to render text with a hotspot
+	PlaceableHotspot.render = Utils.overwrittenFunction(PlaceableHotspot.render, renderHotspot)
+	-- to know when a bale was bought from store
+	ShopController.onVehicleBought = Utils.appendedFunction(ShopController.onVehicleBought, baleBought);
+
+	if self.debug then 
+		-- to know when a bale creates on client
+		NetworkNode.addObject = Utils.appendedFunction(NetworkNode.addObject, addBale);
+		BuyVehicleEvent.run = Utils.appendedFunction(BuyVehicleEvent.run, buyEventRun);
+	end
 	self.initialized 	= true
 	print(string.format("  Loaded %s V%s", self.name, self.version))
 end;
@@ -168,6 +193,8 @@ end;
 ----------------------- initilization on load Map ----------------------------------------------
 function BaleSee:onPostLoadMap()
 	debugPrint("-- BaleSee:loadMap() --") 
+	self.shopX = g_currentMission.storeSpawnPlaces[1].startX
+	self.shopZ = g_currentMission.storeSpawnPlaces[1].startZ 
 	self.ft 			= g_fillTypeManager.fillTypes
 	self.ingameMap 		= g_currentMission.inGameMenu.pageMapOverview.ingameMapBase
 	self.ingameMap.filter[MapHotspot.CATEGORY_BALE] = true
@@ -276,12 +303,6 @@ function BaleSee:onPostLoadMap()
 	g_messageCenter:subscribe(MessageType.PLAYER_FARM_CHANGED, self.onPlayerFarmChanged, self)
 	g_messageCenter:subscribe(MessageType.FARM_DELETED, self.onFarmDeleted, self)
 
-	-- to insert Shift-B key for player F1-menu
-	Player.registerActionEvents = Utils.appendedFunction(Player.registerActionEvents, self.registerActionEventsPlayer);
-	Player.removeActionEvents = Utils.appendedFunction(Player.removeActionEvents, self.removeActionEventsPlayer);		
-		
-	-- to render text with a hotspot
-	PlaceableHotspot.render = Utils.overwrittenFunction(PlaceableHotspot.render, renderHotspot)
 	if self.debug then
 		self:makeLegend() 	-- needs self.colors
 		addConsoleCommand("bsLegend", "Switch legend display on ingameMap [on / off].", "toggleLegend", self)
@@ -360,4 +381,52 @@ function BaleSee:onUpdate(dt)
 	if self.palState > BS.OFF then
 		self:updateHotspots("pallet")
 	end	
+end
+function baleBought(shop, lease, price) --  ShopController:onVehicleBought()
+	debugPrint("--baleBought: file %s price %d", shop.buyItemFilename:sub(-18),price)
+	local bs = BaleSee
+	if not (bs.isMultiplayer and bs.isClient) or bs.numShopMessage == 0 then return end  
+
+	-- player far away from shop?
+	local plX,_,plZ = getWorldTranslation(g_currentMission.player.rootNode)
+	local distance = MathUtil.vector2Length(bs.shopX - plX, bs.shopZ - plZ)
+	debugPrint("  player: (%.1f, %.1f), shop: (%.1f, %.1f), dist %.1f",
+		plX,plZ, bs.shopX,bs.shopZ, distance)
+	if shop.buyItemFilename:find("buyableBales") and distance > 300 then 
+		-- 300 is forcedClipDistance for a bale
+		local text = g_i18n:getText("BS_baleBought")
+		if bs.numShopMessage == 1 then 
+			text = text .."\n\n"..  g_i18n:getText("BS_lastBought")
+		end
+		bs.numShopMessage = bs.numShopMessage -1
+		g_gui:showInfoDialog({
+			text = text,
+			dialogType = DialogElement.TYPE_INFO,
+			callback = shop.onBoughtCallback,
+			target = shop
+		})
+	end
+end
+function addBale(node, obj, id)
+	-- called when client first sees a bale obj
+	-- need this for bales created far away from player (e.g. store buy)
+	if g_server or not obj:isa(Bale) then return end
+	local bs = BaleSee
+	-- skip if client is still joining the game 
+	if not bs.mission.isMissionStarted then return end
+
+	debugPrint("- addObject(): %s / %s", obj.id, id)
+	-- create hotspot, if this bale does not have one yet
+	local hs, col, img 
+	local h = bs.baleToHotspot[obj] 	-- {hotspot, color, fillType}
+	if h == nil and obj:getOwnerFarmId() ~= nil
+				and obj:getOwnerFarmId() ~= 0 then
+		bs:makeBHotspot(obj)
+	end	
+end
+function buyEventRun(evt, connection) -- BuyObjectEvent:run()
+	debugPrint("--BuyObjectEvent, server connection = %s", connection:getIsServer())
+	debugPrint("file %s. farmId %s. errorCode %s", evt.filename:sub(-18),
+		evt.ownerFarmId, evt.errorCode)
+	--if not connection:getIsServer() then
 end

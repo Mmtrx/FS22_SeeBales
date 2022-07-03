@@ -3,7 +3,7 @@
 	<translationContributors/>
 	<texts>
 		<!-- Keys -->
-		<text name = "input_bs_Bale" text = "SeeBales: show dialog"/>
+		<text name = "input_BS_MENU" text = "SeeBales"/>
 		<!-- Gui -->
 		<text name = "BS_Settings" text = "Settings"/>
 		<text name = "BS_BaleStatistics" text = "Bale Statistics"/>
@@ -17,6 +17,10 @@
 		<text name = "BS_palFarm" text = "Farm products"/>
 		<text name = "BS_palFood" text = "Food products"/>
 		<text name = "BS_palIndustry" text = "Industry products"/>
+
+		<!-- Info Dialog -->
+		<text name = "BS_baleBought" text = "INFO SeeBales: The bales you just bought will only be recognized by SeeBales, when you move near to them."/>
+		<text name = "BS_lastBought" text = "(This message will not show again.)"/>
 
 		<!-- Gui Settings Dialog -->
 		<text name = "BS_showBales" text = "Bales Display"/>
