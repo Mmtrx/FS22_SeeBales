@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <l10n>
-	<translationContributors/>
+    <translationContributors>nagor</translationContributors>
 	<texts>
 		<!-- Keys -->
 		<text name = "input_BS_MENU" text = "SeeBales"/>
@@ -9,14 +9,18 @@
 		<text name = "BS_BaleStatistics" text = "Статистика тюков"/>
 		<text name = "BS_PalletStatistics" text = "Статистика поддонов"/>
 		<text name = "BS_Type" text = "Тип"/>
-		<text name = "BS_Count" text = "Количество"/>
+		<text name = "BS_Count" text = "Кол-во"/>
 		<text name = "BS_total" text = "Всего"/>
 		<text name = "BS_round" text = "кругл."/>
 		<text name = "BS_square" text = "кв."/>
+		<text name = "BS_palSupplies" text = "Сельхозработы и производства"/>
+		<text name = "BS_palFarm" text = "Сельхозпродукция"/>
+		<text name = "BS_palFood" text = "Пищевые продукты"/>
+		<text name = "BS_palIndustry" text = "Промышленные товары"/>
 
 		<!-- Info Dialog -->
-		<text name = "BS_baleBought" text = "INFO SeeBales: The bales you just bought will only be recognized by SeeBales, when you move near to them."/>
-		<text name = "BS_lastBought" text = "(This message will not show again.)"/>
+		<text name = "BS_baleBought" text = "ИНФОРМАЦИЯ SeeBales: Только что купленные вами тюки будут распознаны SeeBales только тогда, когда вы приблизитесь к ним."/>
+		<text name = "BS_lastBought" text = "(Это сообщение больше не будет отображаться.)"/>
 
 		<!-- Gui Settings Dialog -->
 		<text name = "BS_showBales" text = "Отображение тюков"/>
@@ -24,12 +28,14 @@
 		<text name = "BS_size" text = "Размер значка"/>
 		<text name = "BS_icons" text = "Значки"/>
 		<text name = "BS_farm" text = "Владелец фермы"/>
+		<text name = "BS_all" text = "Показать все"/>
 		<text name = "BS_symbols" text = "Точечные маркеры"/>
 
 		<text name = "BS_tipShowBales" text = "Вы можете настроить способ отображения тюков: в виде значков, точечных маркеров или вообще без них."/>
 		<text name = "BS_tipShowPals" text = "Вы можете настроить способ отображения поддонов: в виде значков, точечных маркеров или вообще без них."/>
 		<text name = "BS_tipSize" text = "Вы можете установить размер символов (значков, точечных маркеров) на карте."/>
 		<text name = "BS_tipFarm" text = "Вы можете указать, для какой фермы отображается статистика."/>
+		<text name = "BS_tipAll" text = "Вы можете указать, будут ли отображаться на карте все тюки/поддоны или только те, которыми вы владеете."/>
 		<text name = "BS_warnPal" text = "Внимание: На карте больше чем %d типов поддонов. Пожалуйста, используйте колёсико мыши для прокрутки."/>
 		<text name = "BS_warnBal" text = "Внимание: На карте больше чем %d типов тюков. Пожалуйста, используйте колёсико мыши для прокрутки."/>
 	</texts>
