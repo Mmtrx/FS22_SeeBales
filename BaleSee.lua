@@ -13,6 +13,7 @@
 --  v2.1.0.0	30.06.2021  MULTIPLAYER! / handle all bale types, (e.g. Maizeplus forage extension)
 --  v3.0.0.0	30.04.2022  port to FS22
 --  v3.0.0.1	15.06.2022  bale / pallet detection moved to update(dt). Inspired by GtX EDC
+--  v3.0.0.2	11.07.2022  bug fix: silage mission bales are not fermenting
 --=======================================================================================================
 
 function debugPrint(text, ...)

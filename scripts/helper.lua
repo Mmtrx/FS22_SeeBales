@@ -12,6 +12,7 @@
 --  v2.0.0.1	19.06.2020  handle all pallet types, (e.g. straw harvest)
 --  v2.1.0.0	30.06.2021  MULTIPLAYER! / handle all bale types, (e.g. Maizeplus forage extension)
 --  v3.0.0.1	15.06.2022  bale / pallet detection moved to update(dt). Inspired by GtX EDC
+--  v3.0.0.2	11.07.2022  bug fix: silage mission bales are not fermenting
 --=======================================================================================================
 function BaleSee:getSize(typ, size)
 	-- return icon / dotmarker size in u.v coordinates
@@ -111,7 +112,7 @@ function BaleSee:toggleSize(size)
 		hs.icon:resetDimensions() 		-- reset hud scaling effects
 	end
 end;
-function BaleSee:updBales(object,farmId,ft,inc,fermenting)
+function BaleSee:updBales(object,farmId,ft,inc,wasFermenting)
 	-- adjust count in self.bales[farm]. 
 	local isRound = object.diameter > 0 		-- works, if it's a bale
 	local size = object.length *100 			-- length in cm
@@ -135,7 +136,7 @@ function BaleSee:updBales(object,farmId,ft,inc,fermenting)
 		self.baleIdToHash[object.id] = hash 
 	else
 		self.baleIdToHash[object.id] = nil 
-		if fermenting then hash = -hash end 
+		if wasFermenting then hash = -hash end 
 	end
 	self.bales[farmId][hash].number = self.bales[farmId][hash].number +inc  -- update bale type
 	self.numBales[farmId] = 		self.numBales[farmId] + inc	 			-- update bales sum

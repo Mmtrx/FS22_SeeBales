@@ -12,6 +12,7 @@
 --  v2.0.0.1	19.06.2020  handle all pallet types, (e.g. straw harvest)
 --  v2.1.0.0	30.06.2021  MULTIPLAYER! / handle all bale types, (e.g. Maizeplus forage extension)
 --  v3.0.0.1	15.06.2022  bale / pallet detection moved to update(dt). Inspired by GtX EDC
+--  v3.0.0.2	11.07.2022  bug fix: silage mission bales are not fermenting
 --=======================================================================================================
 -- ---------------Hotspot class -----------------------------------------------------------
 BaleSeeHotspot = {}
@@ -334,7 +335,9 @@ function BaleSee:onChangedFillType(obj)
 		bs.bHotspots[hotspot] = {obj, color, fillType}
 		bs.baleToHotspot[obj] = {hotspot, color, fillType}
 		-- adjust bale counts, old filltype -1, new fillType +1:
-		bs:updBales(obj, farm, oldFillType , -1, true)	-- decr old filltype
+		-- only possible change is GRASS_WINDROW -> SILAGE
+		-- wasFermenting is only true if not a mission bale
+		bs:updBales(obj, farm, oldFillType , -1, not obj.isMissionBale)	-- decr old filltype
 		bs:updBales(obj, farm, fillType , 1)		-- incr new filltype
 	end
 end
